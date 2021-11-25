@@ -1,4 +1,4 @@
-package greedy;
+package greedy.string;
 
 import java.util.List;
 

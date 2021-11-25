@@ -1,14 +1,15 @@
 package greedy;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
+import javax.net.ssl.HostnameVerifier;
+import javax.swing.text.Caret;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * For two lists of numbers, change one number one second array to maximize common numbers (beautiful pairs).
  */
-
 public class BeautifulPair {
+
 
 	public static int beautifulPairs(List<Integer> A, List<Integer> B) {
 		A.sort(Comparator.comparingInt(x -> x));
@@ -66,4 +67,24 @@ public class BeautifulPair {
 	 *     else        //count == N i.e., no duplicates present
 	 *     return count-1;
 	 */
+}
+
+class Event {
+	int start;
+	int end;
+
+	public Event(int start, int end) {
+		this.start = start;
+		this.end = end;
+	}
+}
+
+class Number {
+	int num;
+	int l;
+
+	public Number(int num, int l) {
+		this.num = num;
+		this.l = l;
+	}
 }
