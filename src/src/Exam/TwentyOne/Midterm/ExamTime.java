@@ -13,9 +13,25 @@ public class ExamTime {
 	 *  @return the smallest penalty for creating all n exercises.
 	 */
 	public static int prioritisingExercises(int n, int[] t, int[] p) {
-		return solveProper(n, t, p, 0);
+		return practice(n, t, p);
+//		return solveProper(n, t, p, 0);
 	}
 
+	public static int practice(int n, int[] t, int[] p) {
+		MidtermExercise[] exercises = new MidtermExercise[n];
+		for (int i = 0; i < exercises.length; i++) {
+			exercises[i] = new MidtermExercise(t[i + 1], p[i + 1]);
+		}
+		Arrays.sort(exercises, Comparator.comparingDouble(x -> -(x.penalty * 1.0 / x.time)));
+		int answer = 0, time = 0;
+
+		for (MidtermExercise exercise : exercises) {
+			time += exercise.time;
+			answer += time * exercise.penalty;
+		}
+
+		return answer;
+	}
 	public static int solveProper(int n, int[] t, int[] p, int sortingMethod) {
 		Exercise[] exercises = new Exercise[n];
 		for (int i = 1; i <= n; i++) {
@@ -54,5 +70,15 @@ public class ExamTime {
 			this.t = t;
 			this.p = p;
 		}
+	}
+}
+
+class MidtermExercise {
+	int time;
+	int penalty;
+
+	public MidtermExercise(int time, int penalty) {
+		this.time = time;
+		this.penalty = penalty;
 	}
 }

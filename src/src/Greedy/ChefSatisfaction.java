@@ -8,7 +8,7 @@ public class ChefSatisfaction {
 	 * Given array of numbers (+, -), multiply with it's index to return max sum.
 	 * Some numbers can be dropped.
 	 *
-	 * Cumulative sum from right side, then do it again. Take max the second time.
+	 * Cumulative sum from right side, then do it again. Take max of second cumsum.
 	 *
 	 * https://leetcode.com/problems/reducing-dishes/
 	 *

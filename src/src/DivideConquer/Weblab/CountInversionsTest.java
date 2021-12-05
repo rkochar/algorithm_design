@@ -15,20 +15,6 @@ public class CountInversionsTest {
 	}
 
 	@Test
-	public void countInversionsDifferentArray() {
-		int[] a = {2, 4, 1, 3, 5};
-		int[] b = {1, 2, 3, 4, 5};
-		assertEquals(6, CountInversions.countInversions(a, b));
-	}
-
-	@Test
-	public void countInversionsGreedy() {
-		int[] a = {2, 4, 1, 3, 5};
-		int[] b = {1, 2, 3, 4, 5};
-		assertEquals(3, CountInversions.countInversionsGreedy(a, b));
-	}
-
-	@Test
 	public void countInversionsWeblab() {
 		int[] c = {2, 1, 0, 8};
 		assertEquals(3, CountInversions.countInversions(c));

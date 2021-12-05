@@ -2,38 +2,39 @@ package DivideConquer.Weblab;
 
 public class    SortPractice {
 
-	public static void quickSort(int[] arr) {
-		quickSort(arr, 0, arr.length - 1);
+	public static int[] quickSort(int[] arr) {
+		return quickSort(arr, 0, arr.length - 1);
 	}
 
-	public static void quickSort(int[] arr, int left, int right) {
+	private static int[] quickSort(int[] arr, int left, int right) {
 		if (left < right) {
 			int p = partition(arr, left, right);
 			quickSort(arr, left, p - 1);
 			quickSort(arr, p + 1, right);
 		}
+		return arr;
 	}
 
-	public static int partition(int[] arr, int left, int right) {
-		int i1 = left;
-		int i2 = right;
-		int pivot = arr[left];
+	private static int partition(int[] arr, int left, int right) {
+		int i = left, j = right, pivot = arr[left];
 
-		while (i1 < i2) {
-			while (i1 <= right && arr[i1] < pivot) i1 ++;
-			while (i2 >= left && arr[i2] > pivot) i2 --;
-			if (i1 < i2) swap(arr, i1, i2);
+		while (i < j) {
+			while (arr[i] < pivot && i <= right) i ++;
+			while (arr[j] > pivot && j >= left) j --;
+			if (i < j) swap(arr, i, j);
 		}
-		if (arr[left] > arr[i2]) swap(arr, left, i2);
-		return i2;
+
+		if (arr[left] > arr[j]) swap(arr, left, j);
+		return j;
 	}
 
-	public static void mergeSort(int[] arr) {
+	public static int[] mergeSort(int[] arr) {
 		mergeSort(arr, 0, arr.length - 1);
+		return arr;
 	}
 
-	public static void mergeSort(int[] arr, int left, int right) {
-		if (left >= right) return;
+	private static void mergeSort(int[] arr, int left, int right) {
+		if (right <= left) return;
 
 		int mid = (right + left) / 2;
 		mergeSort(arr, left, mid);
@@ -41,21 +42,18 @@ public class    SortPractice {
 		merge(arr, left, mid, right);
 	}
 
-	public static void merge(int[] arr, int left, int mid, int right) {
-		int i1 = left;
-		int i2 = mid + 1;
-		int i = 0;
-		int[] tmpArray = new int[right - left + 1];
+	private static void merge(int[] arr, int left, int mid, int right) {
+		int i1 = left, i2 = mid + 1, i = 0;
+		int[] tmp = new int[right - left + 1];
 
-		while (i1 <= mid && i2 <= right)
-			if (arr[i1] <= arr[i2]) tmpArray[i ++] = arr[i1 ++];
-			else tmpArray[i ++] = arr[i2 ++];
+		while (i1 <= mid && i2 <= right) {
+			if (arr[i1] < arr[i2]) tmp[i ++] = arr[i1 ++];
+			else tmp[i ++] = arr[i2 ++];
+		}
 
-
-		while (i1 <= mid) tmpArray[i ++] = arr[i1++];
-		while (i2 <= right) tmpArray[i ++] = arr[i2++];
-
-		for (i = 0; i < tmpArray.length; i ++) arr[i + left] = tmpArray[i];
+		while (i1 <= mid) tmp[i ++] = arr[i1 ++];
+		while (i2 <= right) tmp[i ++] = arr[i2 ++];
+		for (i = 0; i < tmp.length; i ++) arr[i + left] = tmp[i];
 	}
 
 	public static void swap(int[] arr, int i, int j) {

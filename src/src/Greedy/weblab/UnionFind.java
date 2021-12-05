@@ -37,7 +37,7 @@ class UnionFind {
 	/**
 	 * NB: this function should also do path compression
 	 * @param i index of a node
-	 * @return the root of the subtree containg i.
+	 * @return the root of the subtree containing i.
 	 */
 	int find(int i) {
 		// TODO

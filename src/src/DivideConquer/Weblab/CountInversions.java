@@ -30,7 +30,6 @@ public class CountInversions {
 				tmp[i ++] = arr[i1 ++];
 			} else {
 				count += mid - i1 + 1;
-//				count ++;
 				tmp[i ++] = arr[i2 ++];
 			}
 		}
@@ -38,62 +37,6 @@ public class CountInversions {
 		while (i1 <= mid) tmp[i ++] = arr[i1 ++];
 		while (i2 <= right) tmp[i ++] = arr[i2 ++];
 		for (i = 0; i < tmp.length; i ++) arr[i + left] = tmp[i];
-		return count;
-	}
-
-	// ######################################################################################################
-	public static int countInversions(int[] arr1, int[] arr2) {
-		int[] arr = new int[arr1.length + arr2.length];
-		return sortAndCount(arr, arr1, arr2, 0, arr1.length - 1, 0, arr2.length - 1);
-	}
-
-	private static int sortAndCount(int[] arr, int[] arr1, int[] arr2, int left1, int right1, int left2, int right2) {
-		int oneSum = sortAndCount(arr1, left1, right1);
-		int twoSum = sortAndCount(arr2, left2, right2);
-		int countMerge = mergeAndCount(arr, arr1, arr2);
-
-		return oneSum + twoSum + countMerge;
-	}
-
-	private static int mergeAndCount(int[] arr, int[] arr1, int[] arr2) {
-		int i1 = 0, i2 = 0;
-		int count = 0, i = 0;
-
-		while (i1 < arr1.length - 1 && i2 < arr2.length - 1) {
-			if (arr1[i1] <= arr2[i2]) arr[i ++] = arr1[i1 ++];
-			else {
-				count ++;
-				arr[i ++] = arr2[i2 ++];
-			}
-		}
-
-		while (i1 <= arr1.length - 1) arr[i ++] = arr1[i1 ++];
-		while (i2 <= arr2.length - 1) arr[i ++] = arr2[i2 ++];
-		return count;
-	}
-
-	public static int countInversionsGreedy(int[] arr1, int[] arr2) {
-		return Integer.max(greedyCount(arr1, arr2), greedyCount(arr2, arr1));
-	}
-
-	public static int greedyCount(int[] arr1, int[] arr2) {
-		int count = 0;
-		int i1 = 0, i2 = 0;
-
-		while (i1 < arr1.length && i2 < arr2.length) {
-			if (arr1[i1] < arr2[i2]) {
-				i1 ++;
-				i2 ++;
-			} else {
-				i2 ++;
-				count ++;
-			}
-		}
-
-		if (i2 < arr2.length) {
-			count += arr1.length - i2;
-		}
-
 		return count;
 	}
 }

@@ -1,4 +1,4 @@
-package Greedy;
+package Greedy.string;
 
 public class BracketMatching {
 

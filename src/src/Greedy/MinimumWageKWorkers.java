@@ -29,7 +29,7 @@ public class MinimumWageKWorkers {
 
 		double answer = Double.MAX_VALUE;
 		int sum = 0;
-		PriorityQueue<Integer> pq = new PriorityQueue();
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
 
 		for (Worker worker: workers) {
 			pq.offer(-worker.quality);

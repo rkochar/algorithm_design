@@ -6,6 +6,8 @@ import java.util.*;
  * WARNING: The spec tests are not necessarily equal to your grade!
  * You can use them help you test for the correctness of your algorithm,
  * but the final grade is determined by a manual inspection of your implementation.
+ *
+ * https://weblab.tudelft.nl/cse2310/2020-2021/assignment/55775/submission/27232/
  */
 class KittyRescue {
 

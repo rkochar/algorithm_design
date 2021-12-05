@@ -18,9 +18,6 @@ public class MinimumInitialEnergy {
 		Arrays.sort(tasks, new Comparator<int[]>() {
 			@Override
 			public int compare(int[] ints, int[] t1) {
-//				int first = Math.max(t1[1], ints[1] + t1[0]);
-//				int second = Math.max(ints[1], t1[1] + ints[0]);
-//				return first == second ?
 				return Integer.compare(t1[1] - t1[0], ints[1] - ints[0]);
 			}
 		});

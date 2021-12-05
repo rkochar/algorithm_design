@@ -18,7 +18,7 @@ public class OptimalWorkstation {
 	 * @return unlocks saved
 	 */
 	public static int solve(int n, int m, int[] start, int[] duration) {
-		PriorityQueue<Machine> machines = new PriorityQueue<>(Comparator.comparingInt(x -> x.lockedAfter));
+		PriorityQueue<Machine> machines = new PriorityQueue<>(Comparator.comparingInt(x -> x.availableTill));
 		Session[] sessions = new Session[n];
 		for (int i = 1; i < start.length; i++) sessions[i - 1] = new Session(start[i], duration[i]);
 		Arrays.sort(sessions, Comparator.comparingInt(x -> x.start));
@@ -28,7 +28,7 @@ public class OptimalWorkstation {
 			while (!machines.isEmpty()) {
 				if (machines.peek().availableFrom > sessions[i].start) break; // Machine unavailable
 				Machine machine = machines.poll();
-				if (machine.lockedAfter >= sessions[i].start) {
+				if (machine.availableTill >= sessions[i].start) {
 					answer ++;
 					break;
 				}
@@ -53,11 +53,11 @@ public class OptimalWorkstation {
 
 	class Machine {
 		int availableFrom;
-		int lockedAfter;
+		int availableTill;
 
-		public Machine(int availableFrom, int lockedAfter) {
+		public Machine(int availableFrom, int availableTill) {
 			this.availableFrom = availableFrom;
-			this.lockedAfter = lockedAfter;
+			this.availableTill = availableTill;
 		}
 	}
 
