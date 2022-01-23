@@ -43,9 +43,7 @@ class Graph {
 	public boolean hasCirculation() {
 		// TODO
 		this.removeLowerBounds();
-		int supplyDemandRemoved = this.removeSupplyDemand();
-		int flow = MaxFlow.maximizeFlow(this);
-		return flow == supplyDemandRemoved;
+		return this.removeSupplyDemand() == MaxFlow.maximizeFlow(this);
 	}
 
 	/** Should remove all lower bounds on edges. */

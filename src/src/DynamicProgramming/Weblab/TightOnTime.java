@@ -3,7 +3,7 @@ package DynamicProgramming.Weblab;
 public class TightOnTime {
 
 	/**
-	 * Implement this method
+	 * Given grade from hours spent on each assignment, find max grade.
 	 *
 	 * @param n - the number of assignments
 	 * @param h - the number of hours you can spend
@@ -17,9 +17,9 @@ public class TightOnTime {
 
 		for (int i = 1; i <= n; i ++) {
 			for (int j = 0; j <= h; j ++) {
-				int max = Integer.MIN_VALUE;
 				if (j == 0) dp[i][0] = f[i][0] + dp[i - 1][0];
 				else {
+					int max = Integer.MIN_VALUE;
 					for (int k = 0; k <= j; k ++)
 						max = Integer.max(max,dp[i - 1][j - k] + f[i][k]);
 					dp[i][j] = max;

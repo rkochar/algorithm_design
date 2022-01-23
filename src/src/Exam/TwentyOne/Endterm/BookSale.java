@@ -13,7 +13,7 @@ public class BookSale {
 	 * @param p the number of books a volunteer can deliver from index _1_ to _n_. You should ignore a[0].
 	 * @param d the day on which the books need to be delivered from index _1_ to _m_. You should ignore d[0].
 	 * @param a the compatibility of volunteers and books. Book 1 <= i <= m can be delivered on day 1 <= j <= k iff a[i][j] = true. You should ignore a[0][x] and a[x][0].
-	 * @return true iff CH can deliver all the books, remembering that volunteers can do at most 3 deliveries per day.
+	 * @return true iff CH can deliver all the books, reme  mbering that volunteers can do at most 3 deliveries per day.
 	 */
 	public static boolean gettingThoseBooksOut(int n, int m, int k, int[] p, int[] d, boolean[][] a) {
 		// General idea.

@@ -5,6 +5,15 @@ import java.util.List;
 
 public class Knapsack {
 
+
+
+
+
+
+
+
+
+
 	public static int knapsack(int n, int maxWeight, int[] weights, int[] values) {
 		int[][] dp = new int[n + 1][maxWeight + 1];
 		for (int i = 0; i <= n; i ++) dp[i][0] = weights[i] <= i ? values[i] : 0;
