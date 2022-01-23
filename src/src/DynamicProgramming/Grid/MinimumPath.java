@@ -1,6 +1,7 @@
 package DynamicProgramming.Grid;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MinimumPath {
 
@@ -50,5 +51,30 @@ public class MinimumPath {
 				matrix[i][j] += Math.min(matrix[i - 1][j], Math.min(matrix[i - 1][Math.max(0, j - 1)], matrix[i - 1][Math.min(matrix[0].length - 1, j + 1)]));
 
 		return Arrays.stream(matrix[matrix[0].length - 1]).min().getAsInt();
+	}
+
+	/**
+	 * Given a triangle of numbers, find the minimum path sum from top to bottom.
+	 *
+	 * https://leetcode.com/problems/triangle/
+	 *
+	 * Java is not allowing deletion and addition of elements in triangle for some reason. This inplace algo is similar to one above.
+	 *
+	 * @param triangle 2d matrix of elements arranged in triangle
+	 * @return minimum sum to travel from top to bottom row.
+	 */
+	public int minimumTotal(List<List<Integer>> triangle) {
+		int l = triangle.size();
+
+		for (int i = l - 2; i > 0; i --) {
+			List<Integer> tri = triangle.get(i), next = triangle.get(i + 1);
+			for (int j = 0; j < i; j ++) {
+				tri.forEach(System.out::println);
+				int t = tri.remove(j);
+				tri.add(t + Integer.min(next.get(j), next.get(j + 1)), j);
+			}
+		}
+
+		return triangle.get(0).get(0);
 	}
 }

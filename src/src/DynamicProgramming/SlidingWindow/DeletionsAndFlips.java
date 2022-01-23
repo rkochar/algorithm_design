@@ -101,15 +101,15 @@ public class DeletionsAndFlips {
 	 * @param fruits
 	 * @return
 	 */
-	public int totalFruit(int[] fruits) {
-		int lastFruit = 0, secondLastFruit = 0, answer = Integer.MIN_VALUE, lastFruitCount = 0, tmp = 0;
-
-		for (int fruit : fruits) {
-			if (fruit == lastFruit || fruit == secondLastFruit) {
-				tmp ++;
-			} else {
-				lastFruitCount
-			}
-		}
-	}
+//	public int totalFruit(int[] fruits) {
+//		int lastFruit = 0, secondLastFruit = 0, answer = Integer.MIN_VALUE, lastFruitCount = 0, tmp = 0;
+//
+//		for (int fruit : fruits) {
+//			if (fruit == lastFruit || fruit == secondLastFruit) {
+//				tmp ++;
+//			} else {
+//				lastFruitCount
+//			}
+//		}
+//	}
 }

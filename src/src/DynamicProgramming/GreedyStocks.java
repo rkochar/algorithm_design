@@ -1,6 +1,6 @@
 package DynamicProgramming;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class GreedyStocks {
 
@@ -81,7 +81,7 @@ public class GreedyStocks {
 
 	/**
 	 * Atmost k transactions (dp)
-	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/submissions/
+	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
 	 *
 	 * @param k - number of transactions
 	 * @param prices - array of prices
@@ -103,6 +103,24 @@ public class GreedyStocks {
 			}
 		}
 		return sell[k - 1];
+	}
+
+	/**
+	 * Brute force. Buy at m and sell at j.
+	 *
+	 * @param k
+	 * @param prices
+	 * @return
+	 */
+	public int maxProfitKtransactions(int k, int[] prices) {
+		int[][] dp = new int[k + 1][prices.length + 1];
+
+		for (int i = 1; i < dp.length; i ++)
+			for (int j = 1; j < dp[0].length; j++)
+				for (int m = 0; m < j; m ++)
+					dp[i][j] = Integer.max(dp[i][j - 1], Integer.max(dp[i][j], dp[i - 1][m] + prices[j - 1] - prices[m]));
+
+		return dp[k][prices.length];
 	}
 
 	/**
