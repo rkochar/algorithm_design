@@ -19,6 +19,12 @@ class Graph {
 		this.sink = null;
 	}
 
+	public Graph(List<Node> nodes, Node source, Node sink) {
+		this.nodes = nodes;
+		this.source = source;
+		this.sink = sink;
+	}
+
 	public Node getSink() {
 		return sink;
 	}
